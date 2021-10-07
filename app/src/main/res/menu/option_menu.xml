@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--name space is needed to use app:showAsAction="ifRoom“-->
+    <item
+        android:id="@+id/option_menu_facebook"
+        android:title="Facebook"
+        android:icon="@drawable/ic_facebook"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/option_menu_instagram"
+        android:title="Instagram"
+        android:icon="@drawable/ic_instagram"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/option_menu_linkedin"
+        android:title="LinkedIn"
+        android:icon="@drawable/ic_linkedin"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/option_menu_skype"
+        android:title="Skype"
+        android:icon="@drawable/ic_skype"
+        app:showAsAction="never"/>
+
+
+    <!-- Here app is name space name which is defined in the menu header part-->
+</menu>
