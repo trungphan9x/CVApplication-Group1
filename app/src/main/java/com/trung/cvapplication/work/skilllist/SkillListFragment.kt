@@ -1,15 +1,19 @@
 package com.trung.cvapplication.work.skilllist
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.material.snackbar.Snackbar
 import com.trung.cvapplication.R
 import com.trung.cvapplication.model.local.Skill
 import com.trung.cvapplication.model.placeholder.SkillPlaceholderContent
 import kotlinx.android.synthetic.main.fragment_skill_list.*
+
+
 
 /**
  * A fragment representing a list of Items.
@@ -40,8 +44,15 @@ class SkillListFragment : Fragment() {
 
     private fun setListener() {
         fbAddSkill.setOnClickListener {
-            SkillPlaceholderContent.addItem(Skill((SkillPlaceholderContent.ITEMS.size + 1).toString(), "Skill ${SkillPlaceholderContent.ITEMS.size+1}", ""))
+            SkillPlaceholderContent.addLatestItem(Skill((SkillPlaceholderContent.ITEMS.size + 1).toString(), "Skill ${SkillPlaceholderContent.ITEMS.size+1}", ""))
             listSkill.adapter?.notifyItemInserted(SkillPlaceholderContent.ITEMS.size)
+
+            Snackbar.make(requireActivity().findViewById(R.id.fragmentContainer), "You just added a new skill", Snackbar.LENGTH_LONG)
+                .setAction("UNDO") {
+                    SkillPlaceholderContent.removeLatestItem()
+                    listSkill.adapter?.notifyItemRemoved(SkillPlaceholderContent.ITEMS.size)
+                }
+                .show()
         }
     }
 

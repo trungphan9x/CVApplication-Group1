@@ -22,18 +22,31 @@ object SkillPlaceholderContent {
      */
     val ITEM_MAP: MutableMap<String, Skill> = HashMap()
 
-    private val COUNT = 30
+    private var count = 30
 
     init {
         // Add some sample items.
-        for (i in 1..COUNT) {
+        for (i in 1..count) {
             addItem(createPlaceholderItem(i))
         }
     }
 
-    fun addItem(item: Skill) {
+    private fun addItem(item: Skill) {
         ITEMS.add(item)
         ITEM_MAP.put(item.id, item)
+    }
+
+    fun addLatestItem(item: Skill) {
+        ITEMS.add(item)
+        ITEM_MAP.put(item.id, item)
+        count++
+    }
+
+    fun removeLatestItem() {
+        val removedItemId = count-1
+        ITEMS.removeAt(removedItemId)
+        ITEM_MAP.remove(removedItemId.toString())
+        count--
     }
 
     private fun createPlaceholderItem(position: Int): Skill {
