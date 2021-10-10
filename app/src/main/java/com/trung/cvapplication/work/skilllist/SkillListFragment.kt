@@ -17,6 +17,7 @@ import android.content.DialogInterface
 import android.view.WindowManager
 
 import android.widget.EditText
+import com.google.android.material.snackbar.Snackbar
 
 
 /**
@@ -51,24 +52,20 @@ class SkillListFragment : Fragment() {
     }
 
     private fun setListener() {
-//        fbAddSkill.setOnClickListener {
-//            SkillPlaceholderContent.addLatestItem(Skill((SkillPlaceholderContent.ITEMS.size + 1).toString(), "Skill ${SkillPlaceholderContent.ITEMS.size+1}", ""))
-//            listSkill.adapter?.notifyItemInserted(SkillPlaceholderContent.ITEMS.size)
-//
-//            Snackbar.make(requireActivity().findViewById(R.id.fragmentContainer), "You just added a new skill", Snackbar.LENGTH_LONG)
-//                .setAction("UNDO") {
-//                    SkillPlaceholderContent.removeLatestItem()
-//                    listSkill.adapter?.notifyItemRemoved(SkillPlaceholderContent.ITEMS.size)
-//                }
-//                .show()
-//        }
 
         fbAddSkill.setOnClickListener {
-            showDialogToSetSkill()
+            showDialogToSetSkill() {
+                Snackbar.make(requireActivity().findViewById(R.id.fragmentContainer), "You just added a new skill", Snackbar.LENGTH_LONG).setAction("UNDO") {
+                    val removedItem = skills.size-1
+                    skills.removeAt(removedItem)
+                    listSkill.adapter?.notifyItemRemoved(removedItem)
+                }
+                .show()
+            }
         }
     }
 
-    private fun showDialogToSetSkill() {
+    private fun showDialogToSetSkill(listener: () -> Unit) {
         val taskEditText = EditText(requireContext())
         val dialog: AlertDialog = AlertDialog.Builder(requireContext())
             .setTitle("Add a new skill")
@@ -78,6 +75,7 @@ class SkillListFragment : Fragment() {
                 val skill = taskEditText.text.toString()
                 skills.add(skill)
                 listSkill.adapter?.notifyItemInserted(skills.size)
+                listener.invoke()
                 dialog.dismiss()
             })
             .setNegativeButton("Cancel") { dialog, which ->
