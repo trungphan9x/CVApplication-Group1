@@ -1,7 +1,9 @@
 package com.trung.cvapplication.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -12,6 +14,7 @@ import com.trung.cvapplication.contact.ContactFragment
 import com.trung.cvapplication.home.HomeFragment
 import com.trung.cvapplication.work.WorkFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import java.io.Serializable
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.option_menu,menu)
         return super.onCreateOptionsMenu(menu)
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {

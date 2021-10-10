@@ -5,12 +5,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import com.trung.cvapplication.databinding.FragmentWorkItemBinding
-import com.trung.cvapplication.model.local.Work
+import com.trung.cvapplication.model.remote.Work
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class WorkAdapter(
     private val values: List<Work>
 ) : RecyclerView.Adapter<WorkAdapter.ViewHolder>() {
@@ -29,19 +25,21 @@ class WorkAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        holder.company.text = item.companyName
+        holder.location.text = item.location
+        holder.pos.text = item.position
+        holder.duration.text = item.duration
+        holder.des.text = item.description
     }
 
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(binding: FragmentWorkItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
-
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
-        }
+        val company: TextView = binding.tvCompanyValue
+        val location: TextView = binding.tvLocationValue
+        val pos: TextView = binding.tvPositionValue
+        val duration: TextView = binding.tvDurationValue
+        val des: TextView = binding.tvDescriptionValue
     }
 
 }

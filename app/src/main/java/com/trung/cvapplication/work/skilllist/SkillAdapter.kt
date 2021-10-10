@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import com.trung.cvapplication.databinding.FragmentSkillItemBinding
-import com.trung.cvapplication.model.local.Skill
 
 /**
  * [RecyclerView.Adapter] that can display a [PlaceholderItem].
  * TODO: Replace the implementation with code for your data type.
  */
 class SkillAdapter(
-    private val values: List<Skill>
+    private val values: List<String>
 ) : RecyclerView.Adapter<SkillAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,20 +28,15 @@ class SkillAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        holder.skill.text = item
     }
 
     override fun getItemCount(): Int = values.size
 
     inner class ViewHolder(binding: FragmentSkillItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
+        val skill: TextView = binding.tvSkill
 
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
-        }
     }
 
 }
