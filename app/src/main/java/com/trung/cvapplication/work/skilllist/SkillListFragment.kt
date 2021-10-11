@@ -20,9 +20,6 @@ import android.widget.EditText
 import com.google.android.material.snackbar.Snackbar
 
 
-/**
- * A fragment representing a list of Items.
- */
 class SkillListFragment : Fragment() {
 
     private var columnCount = 2

@@ -2,4 +2,33 @@
     <string name="app_name">CVApplication</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="url_web_view">https://www.linkedin.com/in/moushumi-seal/</string>
+    <string name="email_subject">Hi</string>
+    <string name="email_content">Nice to meet you</string>
+    <string name="facebook_package">com.facebook.katana</string>
+    <string name="instagram_package">com.instagram.android</string>
+    <string name="linkedin_package">com.linkedin.android</string>
+    <string name="skype_package">com.skype.raider</string>
+    <string name="facebook_name">Facebook</string>
+    <string name="instagram_name">Instagram</string>
+    <string name="linkedin_name">LinkedIn</string>
+    <string name="skype_name">Skype</string>
+    <string name="tab_work_list">WORK LIST</string>
+    <string name="tab_skill_list">SKILL LIST</string>
+    <string name="phone_name">Phone:</string>
+    <string name="phone_value">0123456789</string>
+    <string name="email_name">Email:</string>
+    <string name="email_value">hahah@gmail.com</string>
+    <string name="home_cv_name">MOUSHUMI SEAL</string>
+    <string name="home_objective">Self-motivated software engineer with strong knowledge of software development lifecycle methodologies, having excellent analytical and communication skills and a keen interest in learning new tools and technologies in a challenging environment.</string>
+    <string name="item_work_company_name">Company:</string>
+    <string name="item_work_company_vale">HEWLETT PACKARD EDUCATION SERVICES</string>
+    <string name="item_work_location_name">Location:</string>
+    <string name="item_work_location_value">SINGAPORE</string>
+    <string name="item_work_position_name">Position:</string>
+    <string name="item_work_position_value">SOFTWARE ENGINEER</string>
+    <string name="item_work_duration_name">Duration:</string>
+    <string name="item_work_duration_value">May 2018 - Present</string>
+    <string name="item_work_description_name">Description:</string>
+    <string name="item_work_description_value">Modifying existing data security software by adding new functionalities and resolving issues in the system.\nLanguages used include Java 8 and AngularJS 1.x.</string>
 </resources>

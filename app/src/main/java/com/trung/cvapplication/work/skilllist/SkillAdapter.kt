@@ -6,10 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.trung.cvapplication.databinding.FragmentSkillItemBinding
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class SkillAdapter(
     private val values: List<String>
 ) : RecyclerView.Adapter<SkillAdapter.ViewHolder>() {

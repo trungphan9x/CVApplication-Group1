@@ -25,7 +25,7 @@ class AboutMeFragment : Fragment() {
 
     private fun setUpWebView() {
         webView.webViewClient = WebViewClient()
-        webView.loadUrl("https://www.linkedin.com/in/moushumi-seal/")
+        webView.loadUrl(getString(R.string.url_web_view))
         webView.settings.javaScriptEnabled = true
     }
 

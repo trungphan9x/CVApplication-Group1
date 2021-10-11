@@ -38,8 +38,8 @@ class ContactFragment : Fragment(){
                 .setData("mailto:${tvEmail.text}".toUri())
             val emailIntent = Intent(ACTION_SEND).apply {
                 putExtra(EXTRA_EMAIL, arrayOf(tvEmail.text))
-                putExtra(EXTRA_SUBJECT, "Hi")
-                putExtra(EXTRA_TEXT, "Nice to meet you")
+                putExtra(EXTRA_SUBJECT, getString(R.string.email_subject))
+                putExtra(EXTRA_TEXT, getString(R.string.email_content))
                 selector = selectorIntent
             }
             startActivity(Intent.createChooser(emailIntent, "Choose APP to send email:"))

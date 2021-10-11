@@ -1,10 +1,7 @@
 package com.trung.cvapplication.main
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -17,7 +14,6 @@ import com.trung.cvapplication.home.HomeFragment
 import com.trung.cvapplication.work.WorkFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_contact.*
-import java.io.Serializable
 
 class MainActivity : AppCompatActivity(), View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,19 +32,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.option_menu_facebook -> {
-                openImplicitIntent("com.facebook.katana", "Facebook")
+                openImplicitIntent(getString(R.string.facebook_package), getString(R.string.facebook_name))
                 true
             }
             R.id.option_menu_instagram -> {
-                openImplicitIntent("com.instagram.android", "Instagram")
+                openImplicitIntent(getString(R.string.instagram_package), getString(R.string.instagram_name))
                 true
             }
             R.id.option_menu_linkedin -> {
-                openImplicitIntent("com.linkedin.android", "LinkedIn")
+                openImplicitIntent(getString(R.string.linkedin_package), getString(R.string.linkedin_name))
                 true
             }
             R.id.option_menu_skype -> {
-                openImplicitIntent("com.skype.raider", "Skype")
+                openImplicitIntent(getString(R.string.skype_package), getString(R.string.skype_name))
                 true
             }
 
@@ -88,13 +84,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
         view?.let {
             when(view.id) {
                 R.id.btnFacebook -> {
-                    openImplicitIntent("com.facebook.katana", "Facebook")
+                    openImplicitIntent(getString(R.string.facebook_package), getString(R.string.facebook_name))
                 }
                 R.id.btn_skype -> {
-                    openImplicitIntent("com.skype.raider", "Skype")
+                    openImplicitIntent(getString(R.string.skype_package), getString(R.string.skype_name))
                 }
                 R.id.btn_instagram -> {
-                    openImplicitIntent("com.instagram.android", "Instagram")
+                    openImplicitIntent(getString(R.string.instagram_package), getString(R.string.instagram_name))
                 }
 
             }

@@ -32,11 +32,11 @@ class WorkFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             when (position) {
                 0 -> {
-                    tab.text = "WORK LIST"
+                    tab.text = getString(R.string.tab_work_list)
                     tab.setIcon(R.drawable.ic_work_list)
                 }
                 1 -> {
-                    tab.text = "SKILL LIST"
+                    tab.text = getString(R.string.tab_skill_list)
                     tab.setIcon(R.drawable.ic_skill_list)
                 }
             }
