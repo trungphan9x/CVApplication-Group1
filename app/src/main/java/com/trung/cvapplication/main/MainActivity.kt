@@ -14,12 +14,22 @@ import com.trung.cvapplication.home.HomeFragment
 import com.trung.cvapplication.work.WorkFragment
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_contact.*
+import androidx.fragment.app.FragmentManager
+
 
 class MainActivity : AppCompatActivity(), View.OnClickListener{
+
+    val fragmentHome: Fragment = HomeFragment()
+    val fragmentAboutMe: Fragment = AboutMeFragment()
+    val fragmentWork: Fragment = WorkFragment()
+    val fragmentContact: Fragment = ContactFragment()
+    val fm: FragmentManager = supportFragmentManager
+    var active = fragmentHome
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setCurrentFragment(HomeFragment.newInstance())
+        initializeFragments()
         setListener()
     }
 
@@ -53,22 +63,59 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
 
     }
 
+    private fun initializeFragments() {
+        fm.beginTransaction().add(R.id.fragmentContainer, fragmentContact, "contact").hide(fragmentContact).commit()
+        fm.beginTransaction().add(R.id.fragmentContainer, fragmentWork, "work").hide(fragmentWork).commit()
+        fm.beginTransaction().add(R.id.fragmentContainer, fragmentAboutMe, "aboutme").hide(fragmentAboutMe).commit()
+        fm.beginTransaction().add(R.id.fragmentContainer,fragmentHome, "home").commit();
+    }
+
     private fun setListener() {
         bnv.setOnItemSelectedListener {
             when (it.itemId) {
-                R.id.menu_home -> setCurrentFragment(HomeFragment.newInstance())
-                R.id.menu_about_me -> setCurrentFragment(AboutMeFragment.newInstance())
-                R.id.menu_work -> setCurrentFragment(WorkFragment.newInstance())
-                R.id.menu_contact -> setCurrentFragment(ContactFragment.newInstance())
+                R.id.menu_home -> {
+                    fm.beginTransaction().hide(active).show(fragmentHome).commit()
+                    active = fragmentHome
+                    return@setOnItemSelectedListener true
+                }
+                R.id.menu_about_me -> {
+                    fm.beginTransaction().hide(active).show(fragmentAboutMe).commit()
+                    active = fragmentAboutMe
+                    return@setOnItemSelectedListener true
+                }
+                R.id.menu_work -> {
+                    fm.beginTransaction().hide(active).show(fragmentWork).commit()
+                    active = fragmentWork
+                    return@setOnItemSelectedListener true
+                }
+                R.id.menu_contact -> {
+                    fm.beginTransaction().hide(active).show(fragmentContact).commit()
+                    active = fragmentContact
+                    return@setOnItemSelectedListener true
+                }
             }
-            return@setOnItemSelectedListener true
+            return@setOnItemSelectedListener false
         }
-    }
 
-    private fun setCurrentFragment(fragment: Fragment){
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.fragmentContainer,fragment)
-            commit()
+        bnv.setOnItemReselectedListener {
+            when (it.itemId) {
+                R.id.menu_home -> {
+                    fm.beginTransaction().detach(fragmentHome).commit()
+                    fm.beginTransaction().attach(fragmentHome).commit()
+                }
+                R.id.menu_about_me -> {
+                    fm.beginTransaction().detach(fragmentAboutMe).commit()
+                    fm.beginTransaction().attach(fragmentAboutMe).commit()
+                }
+                R.id.menu_work -> {
+                    fm.beginTransaction().detach(fragmentWork).commit()
+                    fm.beginTransaction().attach(fragmentWork).commit()
+                }
+                R.id.menu_contact -> {
+                    fm.beginTransaction().detach(fragmentContact).commit()
+                    fm.beginTransaction().attach(fragmentContact).commit()
+                }
+            }
         }
     }
 
