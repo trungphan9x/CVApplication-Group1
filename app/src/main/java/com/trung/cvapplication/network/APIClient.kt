@@ -10,7 +10,7 @@ class APIClient {
         // Define the base url
         val  base_url:String = "https://trungphan9x.github.io/"
         // Get the client
-        fun getClient(): Retrofit {
+        private fun getClient(): Retrofit {
             return Retrofit.Builder() // build your Retrofit Object
                 .baseUrl(base_url) // hit the url
                 .addConverterFactory(GsonConverterFactory.create()) // Perform serialization and deserialization

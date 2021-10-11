@@ -12,4 +12,4 @@
     tools:context=".work.worklist.WorkListFragment"
     tools:listitem="@layout/fragment_work_item"
     android:fitsSystemWindows="true"
-    android:paddingBottom="60dp"/>
+    android:paddingBottom="60dp" />

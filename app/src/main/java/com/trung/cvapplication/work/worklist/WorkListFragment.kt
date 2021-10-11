@@ -45,7 +45,9 @@ class WorkListFragment : Fragment() {
             override fun onResponse(call: Call<List<Work>?>?, response: Response<List<Work>?>?) {
                 if( response!!.isSuccessful){ // Check using non null !! operator
                     // The deserialized response body of a successful response ie List<Animals>
-                    setRecyclerView(response.body()!!)
+                    response.body()?.let {
+                        setRecyclerView(it)
+                    }
                 }
             }
             // Unable to get a response
@@ -60,9 +62,7 @@ class WorkListFragment : Fragment() {
     }
 
     private fun setRecyclerView(works : List<Work>) {
-        listWork.layoutManager = LinearLayoutManager(context)
-        listWork.adapter = WorkAdapter(works)
-
+        listWork?.adapter = WorkAdapter(works)
     }
 
     companion object {
