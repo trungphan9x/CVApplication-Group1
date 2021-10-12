@@ -8,7 +8,7 @@ class APIClient {
     // Make into static read from any class without using instance
     companion object{
         // Define the base url
-        val  base_url:String = "https://trungphan9x.github.io/"
+        private const val  base_url:String = "https://trungphan9x.github.io/"
         // Get the client
         private fun getClient(): Retrofit {
             return Retrofit.Builder() // build your Retrofit Object

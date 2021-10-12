@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import androidx.core.net.toUri
 import com.trung.cvapplication.R
 import kotlinx.android.synthetic.main.fragment_contact.*
-import java.net.URI
 
 class ContactFragment : Fragment(){
     override fun onCreateView(
@@ -36,6 +35,7 @@ class ContactFragment : Fragment(){
         tvEmail.setOnClickListener {
             val selectorIntent = Intent(ACTION_SENDTO)
                 .setData("mailto:${tvEmail.text}".toUri())
+
             val emailIntent = Intent(ACTION_SEND).apply {
                 putExtra(EXTRA_EMAIL, arrayOf(tvEmail.text))
                 putExtra(EXTRA_SUBJECT, getString(R.string.email_subject))
@@ -47,7 +47,6 @@ class ContactFragment : Fragment(){
     }
 
     companion object {
-        @JvmStatic
         fun newInstance() = ContactFragment()
     }
 }

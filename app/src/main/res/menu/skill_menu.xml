@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--name space is needed to use app:showAsAction="ifRoom“-->
+    <item
+        android:id="@+id/skill_menu_delete"
+        android:title="Delete"/>
+
+    <item
+        android:id="@+id/skill_menu_detail"
+        android:title="Detail"/>
+    <!-- Here app is name space name which is defined in the menu header part-->
+</menu>

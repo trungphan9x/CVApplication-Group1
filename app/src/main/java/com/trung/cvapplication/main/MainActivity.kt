@@ -19,12 +19,12 @@ import androidx.fragment.app.FragmentManager
 
 class MainActivity : AppCompatActivity(), View.OnClickListener{
 
-    val fragmentHome: Fragment = HomeFragment()
-    val fragmentAboutMe: Fragment = AboutMeFragment()
-    val fragmentWork: Fragment = WorkFragment()
-    val fragmentContact: Fragment = ContactFragment()
-    val fm: FragmentManager = supportFragmentManager
-    var active = fragmentHome
+    private val fragmentHome: Fragment = HomeFragment()
+    private val fragmentAboutMe: Fragment = AboutMeFragment()
+    private val fragmentWork: Fragment = WorkFragment()
+    private val fragmentContact: Fragment = ContactFragment()
+    private val fm: FragmentManager = supportFragmentManager
+    private var active = fragmentHome
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

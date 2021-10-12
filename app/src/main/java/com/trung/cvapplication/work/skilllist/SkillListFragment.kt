@@ -4,9 +4,6 @@ import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.trung.cvapplication.R
 import kotlinx.android.synthetic.main.fragment_skill_list.*
 import android.database.sqlite.SQLiteDatabase
@@ -14,9 +11,12 @@ import android.database.sqlite.SQLiteDatabase
 import android.content.ContentValues
 
 import android.content.DialogInterface
-import android.view.WindowManager
+import android.view.*
+import android.widget.AdapterView
 
 import android.widget.EditText
+import android.widget.PopupMenu
+import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
 
 
@@ -44,12 +44,22 @@ class SkillListFragment : Fragment() {
 
     private fun setRecyclerView() {
         listSkill.layoutManager = GridLayoutManager(context, columnCount)
-        listSkill.adapter = SkillAdapter(skills)
-
+        val adapter = SkillAdapter(skills)
+        listSkill.adapter = adapter
+        adapter.setOnItemClickListener { menuId , position, item, view ->
+            when (menuId) {
+                DELETE_ID -> {
+                    //skills.removeAt(position)
+                    adapter.deleteItem(position)
+                }
+                DETAIL_ID -> {
+                    Toast.makeText(requireContext(), "position: $position, itemName: $item", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun setListener() {
-
         fbAddSkill.setOnClickListener {
             showDialogToSetSkill() {
                 Snackbar.make(requireActivity().findViewById(R.id.fragmentContainer), "You just added a new skill", Snackbar.LENGTH_LONG).setAction("UNDO") {
@@ -85,7 +95,8 @@ class SkillListFragment : Fragment() {
 
 
     companion object {
-        @JvmStatic
         fun newInstance() = SkillListFragment()
+        const val DELETE_ID = 1
+        const val DETAIL_ID = 2
     }
 }

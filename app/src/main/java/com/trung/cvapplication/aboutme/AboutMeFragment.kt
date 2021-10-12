@@ -24,13 +24,14 @@ class AboutMeFragment : Fragment() {
     }
 
     private fun setUpWebView() {
-        webView.webViewClient = WebViewClient()
-        webView.loadUrl(getString(R.string.url_web_view))
-        webView.settings.javaScriptEnabled = true
+        webView.apply {
+            webViewClient = WebViewClient()
+            loadUrl(getString(R.string.url_web_view))
+            settings.javaScriptEnabled = true
+        }
     }
 
     companion object {
-        @JvmStatic
         fun newInstance() = AboutMeFragment()
     }
 }
